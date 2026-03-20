@@ -1,0 +1,28 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: crew-eval-postgres
+    environment:
+      POSTGRES_DB: crew_eval
+      POSTGRES_USER: crew
+      POSTGRES_PASSWORD: crew
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/crew_eval
+      DB_USERNAME: crew
+      DB_PASSWORD: crew
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+
+volumes:
+  postgres-data:

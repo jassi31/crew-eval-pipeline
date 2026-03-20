@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: crew-eval-pipeline
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    autoDeploy: true
+    envVars:
+      - key: DB_URL
+        fromDatabase:
+          name: crew-eval-db
+          property: connectionString
+      - key: DB_USERNAME
+        fromDatabase:
+          name: crew-eval-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: crew-eval-db
+          property: password
+
+databases:
+  - name: crew-eval-db
+    plan: free

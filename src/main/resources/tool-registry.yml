@@ -1,0 +1,39 @@
+tools:
+  definitions:
+    - name: flight_search
+      description: Search flights for the user
+      requiredParameters:
+        - destination
+        - date_range
+      validationPatterns:
+        destination: "^[A-Z]{3}$"
+        date_range: "^\\d{4}-\\d{2}-\\d{2}/\\d{4}-\\d{2}-\\d{2}$"
+      selectionKeywords:
+        - flight
+        - fly
+        - airfare
+        - booking
+    - name: hotel_search
+      description: Search hotels for a destination
+      requiredParameters:
+        - destination
+        - check_in
+        - check_out
+      validationPatterns:
+        destination: "^[A-Za-z\\s]{2,}$"
+        check_in: "^\\d{4}-\\d{2}-\\d{2}$"
+        check_out: "^\\d{4}-\\d{2}-\\d{2}$"
+      selectionKeywords:
+        - hotel
+        - stay
+        - room
+    - name: order_lookup
+      description: Look up an order using the order id
+      requiredParameters:
+        - order_id
+      validationPatterns:
+        order_id: "^[A-Za-z0-9_-]{4,}$"
+      selectionKeywords:
+        - order
+        - shipment
+        - package
