@@ -15,6 +15,7 @@ services:
         fromDatabase:
           name: crew-eval-db
           property: port
+      - key: PGDATABASE
         fromDatabase:
           name: crew-eval-db
           property: database
